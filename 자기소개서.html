@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>김민수 | 자기소개 페이지</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f5f7;
+        --panel: #ffffff;
+        --panel-weak: rgba(255, 255, 255, 0.8);
+        --text: #1d1d1f;
+        --muted: #6e6e73;
+        --accent: #0071e3;
+        --accent-strong: #0a84ff;
+        --border: rgba(0, 0, 0, 0.08);
+        --shadow: 0 18px 32px rgba(0, 0, 0, 0.08);
+        --mono: "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono",
+          monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "SF Pro Display", "SF Pro Text", "Apple SD Gothic Neo",
+          "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, 92%);
+        margin: 0 auto;
+        padding: 48px 0 80px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 40px;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 32px;
+        align-self: start;
+        display: grid;
+        gap: 18px;
+      }
+
+      .name {
+        font-size: clamp(30px, 3.2vw, 42px);
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+
+      .role {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .summary {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .nav {
+        display: grid;
+        gap: 10px;
+      }
+
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        font-size: 14px;
+        color: var(--muted);
+        transition: all 0.2s ease;
+        background: transparent;
+      }
+
+      .nav-btn::before {
+        content: "";
+        width: 18px;
+        height: 1px;
+        background: var(--muted);
+        transition: all 0.2s ease;
+      }
+
+      .nav-btn.active {
+        color: var(--accent);
+        border-color: var(--border);
+        background: var(--panel-weak);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-btn.active::before {
+        background: var(--accent);
+        width: 28px;
+      }
+
+      .action-btn {
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #ffffff;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", "Segoe UI",
+          sans-serif;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .action-btn:hover {
+        background: var(--accent-strong);
+        border-color: var(--accent-strong);
+      }
+
+      main {
+        display: grid;
+        gap: 26px;
+      }
+
+      section {
+        padding: 22px 24px;
+        border-radius: 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .section-title {
+        margin: 0 0 12px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--mono);
+        color: var(--accent);
+      }
+
+      .section-title span {
+        color: var(--text);
+        font-family: inherit;
+      }
+
+      .lead {
+        font-size: 16px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .pill-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .pill {
+        border: 1px solid var(--border);
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: #fafafa;
+      }
+
+      .highlight {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .motto {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline-item {
+        padding-left: 14px;
+        border-left: 2px solid rgba(0, 113, 227, 0.2);
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 24px;
+      }
+
+      @media (max-width: 920px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .nav {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="layout">
+        <aside class="sidebar">
+          <div>
+            <p class="role">Software Developer</p>
+            <h1 class="name">김민수</h1>
+            <p class="summary">
+              사용자에게 가치 있는 서비스를 제공하고 싶은 소프트웨어 개발자
+            </p>
+          </div>
+          <div class="summary">
+            빠르게 변화하는 IT 업계에서 새로운 기술을 학습하고 적용하는 것에
+            흥미를 느끼며, 사용자 경험을 개선하는 솔루션을 찾는 것을 좋아합니다.
+          </div>
+          <nav id="nav" class="nav">
+            <a class="nav-btn" href="#motivation">지원 동기</a>
+            <a class="nav-btn" href="#strengths">장단점</a>
+            <a class="nav-btn" href="#motto">생활신조</a>
+            <a class="nav-btn" href="#experience">경험</a>
+            <a class="nav-btn" href="#goals">입사 후 포부</a>
+          </nav>
+          <button id="highlightBtn" class="action-btn">핵심 포인트</button>
+        </aside>
+
+        <main>
+          <section id="motivation">
+            <h2 class="section-title">
+              <span>01.</span> 지원 동기 및 포부
+            </h2>
+            <p class="lead">
+              안녕하세요. 소프트웨어 개발자로서 사용자에게 가치 있는 서비스를
+              제공하고 싶은 김민수입니다. 대학에서 컴퓨터공학을 전공하며
+              프로그래밍의 기초를 다졌고, 졸업 후 2년간 스타트업에서 웹 개발 업무를
+              담당했습니다.
+            </p>
+            <p>
+              귀사는 혁신적인 기술력과 우수한 개발 문화로 업계에서 인정받고
+              있으며, 이러한 환경에서 저의 기술적 역량을 더욱 발전시키고 의미 있는
+              프로젝트에 기여하고 싶습니다.
+            </p>
+          </section>
+
+          <section id="strengths">
+            <h2 class="section-title"><span>02.</span> 성격의 장단점</h2>
+            <div class="grid">
+              <div>
+                <h3>장점</h3>
+                <div class="pill-list">
+                  <div class="pill">
+                    꾸준한 학습 의지: 새로운 기술 트렌드에 관심이 많아 개인 시간을
+                    활용해 온라인 강의를 수강하고 사이드 프로젝트를 진행합니다.
+                  </div>
+                  <div class="pill">
+                    협업과 소통: 팀 프로젝트에서 다른 개발자, 디자이너, 기획자와
+                    원활히 소통하며 공동의 목표를 달성하는 것을 중요하게 생각합니다.
+                  </div>
+                  <div class="pill">
+                    문제 해결 지향적: 복잡한 버그나 기술적 이슈에 직면했을 때
+                    포기하지 않고 다양한 접근 방법을 시도하여 해결책을 찾습니다.
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3>단점</h3>
+                <div class="pill">
+                  완벽주의 성향: 때로는 코드의 완성도에 지나치게 집착하여 일정에
+                  영향을 줄 수 있습니다. 이를 개선하기 위해 우선순위를 명확히 하고
+                  적정 수준의 완성도를 목표로 하는 연습을 하고 있습니다.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="motto">
+            <h2 class="section-title"><span>03.</span> 생활신조</h2>
+            <p class="motto">"기술은 사람을 위해 존재한다"</p>
+            <p>
+              개발자로서 항상 사용자의 관점에서 생각하려 노력합니다. 아무리
+              기술적으로 뛰어난 코드라도 실제 사용자에게 도움이 되지 않는다면
+              의미가 없다고 생각합니다. 사용자가 더 편리하고 효율적으로 업무를
+              처리할 수 있도록 돕는 것이 개발자의 사명이라고 믿습니다.
+            </p>
+          </section>
+
+          <section id="experience">
+            <h2 class="section-title"><span>04.</span> 경험 및 특이사항</h2>
+            <div class="timeline">
+              <div class="timeline-item">
+                대학교 3학년 때 교내 해커톤에서 "지역 상권 활성화 앱"을 개발하여
+                우수상을 수상했습니다. 팀장을 맡아 5명의 팀원과 함께 48시간 동안
+                React Native로 모바일 앱을 완성했습니다.
+              </div>
+              <div class="timeline-item">
+                백엔드 API 설계부터 프론트엔드 구현까지 전 과정에 참여하면서
+                풀스택 개발 경험을 쌓았고, 팀원들의 역량을 파악해 업무를 효율적으로
+                분배하는 리더십을 발휘했습니다.
+              </div>
+              <div class="timeline-item">
+                컴퓨터공학과 학회에서 활동하며 후배들에게 프로그래밍을 가르치는
+                멘토링을 진행했습니다. 복잡한 개념을 쉽게 설명하는 능력을 기를 수
+                있었고, 이는 현재 팀 내에서 코드 리뷰와 기술 공유에 도움이 되고
+                있습니다.
+              </div>
+            </div>
+          </section>
+
+          <section id="goals">
+            <h2 class="section-title"><span>05.</span> 입사 후 포부</h2>
+            <p>
+              입사 후에는 먼저 귀사의 개발 문화와 코딩 컨벤션에 빠르게 적응하여
+              팀의 일원으로서 역할을 다하겠습니다. 단기적으로는 맡은 업무를
+              성실히 수행하면서 귀사의 비즈니스 도메인에 대한 이해도를 높이고,
+              기존 팀원들과의 협업을 통해 개발 실력을 향상시키겠습니다.
+            </p>
+            <p>
+              중장기적으로는 기술 리더로 성장하여 주니어 개발자들을 멘토링하고,
+              새로운 기술 도입과 개발 프로세스 개선에 기여하고 싶습니다. 특히
+              클라우드 기술과 마이크로서비스 아키텍처에 대한 전문성을 쌓아
+              서비스의 확장성과 안정성 향상에 기여하겠습니다. 궁극적으로는
+              귀사와 함께 성장하여 IT 업계에서 인정받는 개발자가 되고, 사용자에게
+              진정한 가치를 제공하는 혁신적인 서비스 개발에 핵심적인 역할을
+              담당하고 싶습니다.
+            </p>
+          </section>
+        </main>
+      </div>
+
+      <footer>김민수 | 자기소개 페이지</footer>
+    </div>
+
+    <script>
+      const navLinks = Array.from(document.querySelectorAll(".nav-btn"));
+      const sections = navLinks.map((link) =>
+        document.querySelector(link.getAttribute("href"))
+      );
+      const highlightBtn = document.getElementById("highlightBtn");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = `#${entry.target.id}`;
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === id
+              );
+            });
+          });
+        },
+        { rootMargin: "-40% 0px -50% 0px" }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      highlightBtn.addEventListener("click", () => {
+        document
+          .querySelectorAll(".pill, .timeline-item, section")
+          .forEach((el) => el.classList.add("highlight"));
+        setTimeout(() => {
+          document
+            .querySelectorAll(".highlight")
+            .forEach((el) => el.classList.remove("highlight"));
+        }, 900);
+      });
+    </script>
+  </body>
+</html>
